@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for todo in todos %}
+        <div class="card">
+            <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+            <div class="card-block">
+                <h4 class="card-title">
+                    <strong>{{todo.category}}</strong>
+                </h4>
+                <h6 class="card-subtitle mb-2 text-muted">
+                    <i>{{ todo.created_date }}</i>
+                </h6>
+                <h4><a href="" class="card-link">{{ todo.todo_job }}</a></h4>
+                <p class="card-text">{{ todo.todo_job_detail | linebreaksbr }}</p>
+            </div>
+        </div>
+        <p></p>
+    {% endfor %}
+{% endblock %}
