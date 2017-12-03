@@ -126,3 +126,5 @@ STATIC_URL = os.path.join(BASE_DIR, 'todo/static/')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'todo/media/')
 MEDIA_URL = 'static/media/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'collect_static')
