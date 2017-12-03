@@ -126,9 +126,9 @@ USE_TZ = True
 
 # XLH STATIC_URL = '/static/'
 
-STATIC_URL = os.path.join(BASE_DIR, 'todo/static/')
+STATIC_URL = os.path.join(BASE_DIR, '/static/')
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'todo/media/')
+MEDIA_ROOT = os.path.join(BASE_DIR, '/media/')
 MEDIA_URL = 'static/media/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'collect_static')
