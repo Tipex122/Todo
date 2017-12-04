@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+        {% if todo.is_finished %}
+            <div>
+                <button type="button" class="btn btn-success">Closed</button>
+            </div>
+        {% else %}
+            <div>
+                <button type="button" class="btn btn-danger">Open</button>
+            </div>
+        {% endif %}
+        <div>            </div>
+        <h1>{{ todo.todo_job }}</h1>
+        <i>{{ todo.created_date }}</i>
+        <p>{{ todo.todo_job_detail|linebreaksbr }}</p>
+    </div>
+{% endblock %}

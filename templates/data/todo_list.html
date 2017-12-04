@@ -12,7 +12,7 @@
                     <i>{{ todo.created_date }}</i>
                 </h6>
 
-                <h4><a href="" class="card-link">{{ todo.todo_job }}</a></h4>
+                <h4><a href="{% url 'todo_detail' pk=todo.pk %}" class="card-link">{{ todo.todo_job }}</a></h4>
                 <p class="card-text">{{ todo.todo_job_detail | linebreaksbr }}</p>
             </div>
         </div>

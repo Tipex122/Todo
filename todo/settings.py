@@ -14,7 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-print('BASE_DIR: {}'.format(BASE_DIR))
+# print('BASE_DIR: {}'.format(BASE_DIR))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -127,13 +127,13 @@ USE_TZ = True
 # XLH STATIC_URL = '/static/'
 
 STATIC_URL = os.path.join(BASE_DIR, '/static/')
-print('STATIC_URL: {}'.format(STATIC_URL))
+# print('STATIC_URL: {}'.format(STATIC_URL))
 
 MEDIA_ROOT = os.path.join(BASE_DIR, '/media/')
-print('MEDIA_ROOT: {}'.format(MEDIA_ROOT))
+# print('MEDIA_ROOT: {}'.format(MEDIA_ROOT))
 
 MEDIA_URL = 'static/media/'
-print('MEDIA_URL: {}'.format(MEDIA_URL))
+# print('MEDIA_URL: {}'.format(MEDIA_URL))
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'collect_static')
-print('STATIC_ROOT: {}'.format(STATIC_ROOT))
+# print('STATIC_ROOT: {}'.format(STATIC_ROOT))
