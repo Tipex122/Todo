@@ -4,6 +4,7 @@ from django.shortcuts import render, get_object_or_404
 
 # from django.http import HttpResponse
 from .models import Todo
+from .forms import TodoForm
 
 
 def index(request):
@@ -16,3 +17,7 @@ def todo_detail(request, pk):
     todo = get_object_or_404(Todo, pk=pk)
     return render(request, 'data/todo_detail.html', {'todo': todo})
 
+
+def todo_new(request):
+    form = TodoForm()
+    return render(request,'data/todo_edit.html',{'form': form})
