@@ -1,4 +1,6 @@
 from django.shortcuts import render, get_object_or_404
+from django.shortcuts import redirect
+from django.utils import timezone
 
 # Create your views here.
 
@@ -19,5 +21,18 @@ def todo_detail(request, pk):
 
 
 def todo_new(request):
-    form = TodoForm()
-    return render(request,'data/todo_edit.html',{'form': form})
+    if request.method == "POST":
+
+        form = TodoForm(request.POST)
+        if form.is_valid():
+            todo = form.save(commit=False)
+            todo.user = request.user
+            todo.created_date = timezone.now()
+            todo.save()
+            return redirect('todo_detail', pk=todo.pk)
+    else:
+        form = TodoForm()
+
+    return render(request, 'data/todo_edit.html', {'form': form})
+    # return render(request,'data/todo_edit.html',{'form': form})
+
