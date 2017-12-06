@@ -4,11 +4,15 @@
     <div>
         {% if todo.is_finished %}
             <div>
-                <button type="button" class="btn btn-success">Closed</button>
+                <button type="button" class="btn btn-success">
+                    <span class="fa fa-check-square-o fa-lg" aria-hidden="true"></span>
+                </button>
             </div>
         {% else %}
             <div>
-                <button type="button" class="btn btn-danger">Open</button>
+                <button type="button" class="btn btn-danger">
+                    <span class="fa fa-square-o" aria-hidden="true"></span>
+                </button>
             </div>
         {% endif %}
         <div>            </div>

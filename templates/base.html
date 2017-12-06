@@ -12,7 +12,9 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 
         <!-- Todo_list CSS -->
+        <!--
         <link rel="stylesheet" href="{% static 'css/todo.css' %}">
+        -->
         <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.css'%}">
 
         <title>Todos</title>
@@ -41,10 +43,12 @@
                         aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a class="navbar-brand" href="/"><button type="button" class="btn btn-success">Todo</button></a>
+
+                <a class="navbar-brand" href="/"><button type="button" class="btn btn-success">Todo list</button></a>
 
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+                        <!--
                         <li class="nav-item active">
                             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                         </li>
@@ -54,18 +58,18 @@
                         <li class="nav-item">
                             <a class="nav-link disabled" href="#">Disabled</a>
                         </li>
-
+                        -->
                     </ul>
 
-                    <div>
+                    <span>
                         <!-- Manque quelque chose pour bien aligner en vertical les menus items -->
-                        <!-- Todo: mettre un glyphicon cf. fa-envelope-open-o -->
                         <a class="nav-link" href="{% url 'todo_new' %}">
-                            <button type="button" class="btn btn-success">
-                                New
+                            <button type="button" class="btn btn-primary">
+                                <span class="fa fa-plus-circle fa-lg" aria-hidden="true"></span>
                             </button>
                         </a>
-                    </div>
+                    </span>
+
                     <form class="form-inline my-2 my-lg-0">
                         <input class="form-control mr-sm-2" type="text" placeholder="Search">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -73,27 +77,6 @@
                 </div>
             </nav>
         </div>
-
-{% comment %}
-        <div class="page-header alert alert-info" role="alert">
-            <!--
-            <a href="{% url 'todo_new' %}" class="top-menu"><span class="fa fa-envelope-open-o" aria-hidden="true"></span></a>
-            -->
-            <span>
-            <a href="{% url 'todo_new' %}" class="top-menu">
-                <button type="button" class="btn btn-success">Todo</button>
-            </a>
-                </span>
-            <span>
-            <h1><a href="/">Todos </a></h1>
-                </span>
-        </div>
-
-
-        <div class="alert alert-info" role="alert">
-            <h1><a href="/">Todo list</a></h1>
-        </div>
-{% endcomment %}
 
         <div class="container-fluid">
             <hr>
