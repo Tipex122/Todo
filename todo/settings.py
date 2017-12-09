@@ -142,3 +142,5 @@ MEDIA_URL = 'static/media/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'collect_static')
 # print('STATIC_ROOT: {}'.format(STATIC_ROOT))
+
+LOGIN_REDIRECT_URL = 'home'

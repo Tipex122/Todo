@@ -2,6 +2,7 @@
 
 {% block content %}
     {% for todo in todos %}
+        {% if not todo.is_finished %}
         <div class="card">
             <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
             <div class="card-block">
@@ -11,11 +12,16 @@
                 <h6 class="card-subtitle mb-2 text-muted">
                     <i>{{ todo.created_date }}</i>
                 </h6>
-
-                <h4><a href="{% url 'todo_detail' pk=todo.pk %}" class="card-link">{{ todo.todo_job }}</a></h4>
+                <h4>
+                    <a href="{% url 'todo_detail' pk=todo.pk %}" class="card-link">{{ todo.todo_job }}</a>
+                    <button type="button" class="btn btn-danger">
+                        <span class="fa fa-square-o" aria-hidden="true"></span>
+                    </button>
+                </h4>
                 <p class="card-text">{{ todo.todo_job_detail | linebreaksbr }}</p>
             </div>
         </div>
         <p></p>
+        {% endif %}
     {% endfor %}
 {% endblock %}
