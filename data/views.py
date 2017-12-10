@@ -5,14 +5,41 @@ from django.utils import timezone
 # Create your views here.
 
 # from django.http import HttpResponse
-from .models import Todo
-from .forms import TodoForm
+from .models import Todo, Category
+from .forms import TodoForm, CategoryForm
+
+
+def categories_list(request):
+    categories = Category.objects.all()
+    context = {'categories': categories}
+    return render(request, 'data/categories_list.html', context)
+
+
+def category_edit(request, pk):
+    post = get_object_or_404(Category, pk=pk)
+    if request.method == "POST":
+        form = CategoryForm(request.POST, instance=post)
+        if form.is_valid():
+            category = form.save(commit=False)
+            # category.user = request.user
+            # category.created_date = timezone.now()
+            category.save()
+            return redirect('categories_list')  # , pk=post.pk)
+    else:
+        form = CategoryForm(instance=post)
+    return render(request, 'data/category_edit.html', {'form': form})
 
 
 def index(request):
     todos = Todo.objects.all()
     context = {'todos': todos}
     return render(request,'data/todo_list.html', context)
+
+
+def todo_list_by_category(request, pk):
+    todos = Todo.objects.filter(category__id=pk)
+    context = {'todos': todos}
+    return render(request, 'data/todo_list.html', context)
 
 
 def todo_detail(request, pk):
