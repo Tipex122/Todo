@@ -14,9 +14,13 @@
                 </h6>
                 <h4>
                     <a href="{% url 'todo_detail' pk=todo.pk %}" class="card-link">{{ todo.todo_job }}</a>
+                    <a class="btn btn-default" href="{% url 'todo_edit' pk=todo.pk %}"><i class="fa fa-pencil-square-o fa-2x"></i></a>
+                    <a class="btn btn-default" href="#"><i class="fa fa-check-square-o fa-2x"></i></a>
+                    <!--
                     <button type="button" class="btn btn-danger">
-                        <span class="fa fa-square-o" aria-hidden="true"></span>
+                        <span class="fa fa-check-square-o" aria-hidden="true"></span>
                     </button>
+                    -->
                 </h4>
                 <p class="card-text">{{ todo.todo_job_detail | linebreaksbr }}</p>
             </div>

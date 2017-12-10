@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',
     # 'data',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -144,3 +145,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'collect_static')
 # print('STATIC_ROOT: {}'.format(STATIC_ROOT))
 
 LOGIN_REDIRECT_URL = 'home'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

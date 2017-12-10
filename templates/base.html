@@ -1,4 +1,6 @@
 {% load staticfiles %}
+{% load crispy_forms_tags %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -13,7 +15,7 @@
 
         <!-- Todo_list CSS -->
         <link rel="stylesheet" href="{% static 'css/todo.css' %}">
-        <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.css'%}">
+        <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css'%}">
 
         <title>Todos</title>
 
@@ -25,45 +27,26 @@
 
             <div class="container-fluid">
                 <div class="jumbotron">
-                    <font color="grey">
+                    <font color="DarkSlateGray">
                     <h1>Welcome to Todo App!</h1>
                     <h4>Your App to manage your Todos list</h4>
                     <h4>First of all, you have to connect !</h4>
-                    <h6>(If ever you don't have any account, please contact the administrator</h6>
+
                     </font>
                     <div class="row">
                         <div class="col-md-8">
-                            {% comment %}
                             <form action="{% url 'login' %}" method="post" accept-charset="utf-8">
                                 {% csrf_token %}
-                                <input type="hidden" name="next" value="{{ next }}">
-                                <input class="btn btn-default" type="submit" value="Login">
-                            </form>
-                            {% endcomment %}
+                                {{ form | crispy }}
 
-                            {% comment %}
-                            <a href="{% url 'login' %}" class="card-link">
-                                <button type="submit" class="btn btn-success"> To connect</button>
-                            </a>
-                            {% endcomment %}
-
-
-                            <form action="{% url 'login' %}" method="post" accept-charset="utf-8">
-                                {% csrf_token %}
-                                {{ form.as_p }}
                                 <!-- <input type="hidden" name="next" value="{{ next }}">-->
                                 <input class="btn btn-default" type="submit" value="Login">
                                 <!-- <button class="btn btn-default" type="submit">Login</button> -->
                             </form>
-
                         </div>
                     </div>
-                    {% comment %}
-                        <h5>*In case of difficulty: ask to your administrator</h5>
-                        <h5>
-                            <a href="{% url 'password_reset' %}">Lost password?</a>
-                        </h5>
-                    {% endcomment %}
+                    <p></p>
+                    <h6>(If ever you don't have any account, please contact the <a href="#">administrator</a>)</h6>
                 </div> <!-- /jumbotron -->
             </div> <!-- /container -->
 

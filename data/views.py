@@ -36,3 +36,18 @@ def todo_new(request):
     return render(request, 'data/todo_edit.html', {'form': form})
     # return render(request,'data/todo_edit.html',{'form': form})
 
+
+def todo_edit(request, pk):
+    post = get_object_or_404(Todo, pk=pk)
+    if request.method == "POST":
+        form = TodoForm(request.POST, instance=post)
+        if form.is_valid():
+            todo = form.save(commit=False)
+            todo.user = request.user
+            todo.created_date = timezone.now()
+
+            todo.save()
+            return redirect('post_detail', pk=post.pk)
+    else:
+        form = TodoForm(instance=post)
+    return render(request, 'data/todo_edit.html', {'form': form})
