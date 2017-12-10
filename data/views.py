@@ -52,11 +52,15 @@ def todo_edit(request, pk):
 
 
 def todo_checked(request, pk):
-    post = get_object_or_404(Todo, pk=pk)
-    print(post.is_finished)
+    # post = get_object_or_404(Todo, pk=pk)
+    # print(post.is_finished)
     # post.is_finished = True
     todo = Todo.objects.get(pk=pk)
-    todo.is_finished = True
+    if todo.is_finished:
+        todo.is_finished = False
+    else:
+        todo.is_finished = True
+
     todo.save()
     # print(todo)
     # print(todo.is_finished)
