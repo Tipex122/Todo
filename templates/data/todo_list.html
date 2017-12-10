@@ -7,15 +7,15 @@
             <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
             <div class="card-block">
                 <h4 class="card-title">
-                    <strong>{{todo.category}}</strong>
+                    <strong><font color="DarkSlateGray">{{todo.category}}</font></strong>
                 </h4>
                 <h6 class="card-subtitle mb-2 text-muted">
                     <i>{{ todo.created_date }}</i>
                 </h6>
                 <h4>
-                    <a href="{% url 'todo_detail' pk=todo.pk %}" class="card-link">{{ todo.todo_job }}</a>
+                    <b>{{ todo.todo_job }}</b>
                     <a class="btn btn-default" href="{% url 'todo_edit' pk=todo.pk %}"><i class="fa fa-pencil-square-o fa-2x"></i></a>
-                    <a class="btn btn-default" href="#"><i class="fa fa-check-square-o fa-2x"></i></a>
+                    <a class="btn btn-default" href="{% url 'todo_checked' pk=todo.pk %}"><i class="fa fa-check-square-o fa-2x"></i></a>
                     <!--
                     <button type="button" class="btn btn-danger">
                         <span class="fa fa-check-square-o" aria-hidden="true"></span>

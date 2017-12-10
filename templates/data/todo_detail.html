@@ -2,22 +2,18 @@
 
 {% block content %}
     <div>
-        {% if todo.is_finished %}
-            <div>
-                <button type="button" class="btn btn-success">
-                    <span class="fa fa-check-square fa-lg" aria-hidden="true"></span>
-                </button>
-            </div>
-        {% else %}
-            <div>
-                <button type="button" class="btn btn-danger">
-                    <span class="fa fa-square-o" aria-hidden="true"></span>
-                </button>
-            </div>
-        {% endif %}
+
         <div>            </div>
-        <h1>{{ todo.todo_job }}</h1>
-        <i>{{ todo.created_date }}</i>
+        <h1>
+            {{ todo.todo_job }}
+                <a class="btn btn-default" href="{% url 'todo_edit' pk=todo.pk %}"><i class="fa fa-pencil-square-o fa-2x"></i></a>
+            {% if todo.is_finished %}
+                <a class="btn btn-default" href="{% url 'todo_checked' pk=todo.pk %}"><i class="fa fa-check-square fa-2x"></i></a>
+            {% else %}
+                <a class="btn btn-default" href="{% url 'todo_checked' pk=todo.pk %}"><i class="fa fa-check-square-o fa-2x"></i></a>
+            {% endif %}
+        </h1>
+            <i>{{ todo.created_date }}</i>
         <p>{{ todo.todo_job_detail|linebreaksbr }}</p>
     </div>
 {% endblock %}
