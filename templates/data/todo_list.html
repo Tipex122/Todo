@@ -2,30 +2,46 @@
 
 {% block content %}
     {% for todo in todos %}
-        {% if not todo.is_finished %}
+        {% comment %} {% if not todo.is_finished %} {% endcomment %}
         <div class="card">
             <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
             <div class="card-block">
-                <h4 class="card-title">
-                    <strong><font color="DarkSlateGray">{{todo.category}}</font></strong>
-                </h4>
+                <h3 class="card-title">
+                    <strong><font color="Teal">{{todo.category}}</font></strong>
+                </h3>
                 <h6 class="card-subtitle mb-2 text-muted">
                     <i>{{ todo.created_date }}</i>
                 </h6>
-                <h4>
-                    <b>{{ todo.todo_job }}</b>
-                    <a class="btn btn-default" href="{% url 'todo_edit' pk=todo.pk %}"><i class="fa fa-pencil-square-o fa-2x"></i></a>
-                    <a class="btn btn-default" href="{% url 'todo_checked' pk=todo.pk %}"><i class="fa fa-check-square-o fa-2x"></i></a>
-                    <!--
-                    <button type="button" class="btn btn-danger">
-                        <span class="fa fa-check-square-o" aria-hidden="true"></span>
-                    </button>
-                    -->
-                </h4>
+
+                {% if todo.is_finished %}
+                <font color="Grey">
+                    <h4>
+                        <b>{{ todo.todo_job }}</b>
+                        <a class="btn btn-default" href="{% url 'todo_edit' pk=todo.pk %}"><i class="fa fa-pencil-square-o fa-2x"></i></a>
+                        <a class="btn btn-default" href="{% url 'todo_checked' pk=todo.pk %}"><i class="fa fa-check-square fa-2x"></i></a>
+                        <!--
+                        <button type="button" class="btn btn-danger">
+                            <span class="fa fa-check-square-o" aria-hidden="true"></span>
+                        </button>
+                        -->
+                    </h4>
+                </font>
+                {% else %}
+                    <h4>
+                        <b>{{ todo.todo_job }}</b>
+                        <a class="btn btn-default" href="{% url 'todo_edit' pk=todo.pk %}"><i class="fa fa-pencil-square-o fa-2x"></i></a>
+                        <a class="btn btn-default" href="{% url 'todo_checked' pk=todo.pk %}"><i class="fa fa-check-square-o fa-2x"></i></a>
+                        <!--
+                        <button type="button" class="btn btn-danger">
+                            <span class="fa fa-check-square-o" aria-hidden="true"></span>
+                        </button>
+                        -->
+                    </h4>
+                {% endif %}
                 <p class="card-text">{{ todo.todo_job_detail | linebreaksbr }}</p>
             </div>
         </div>
         <p></p>
-        {% endif %}
+        {% comment %} {% endif %} {% endcomment %}
     {% endfor %}
 {% endblock %}

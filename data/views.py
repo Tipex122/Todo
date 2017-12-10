@@ -53,6 +53,16 @@ def todo_edit(request, pk):
 
 def todo_checked(request, pk):
     post = get_object_or_404(Todo, pk=pk)
+    print(post.is_finished)
+    # post.is_finished = True
+    todo = Todo.objects.get(pk=pk)
+    todo.is_finished = True
+    todo.save()
+    # print(todo)
+    # print(todo.is_finished)
+    return redirect('home')
+
+'''
     if request.method == "POST":
         form = TodoForm(request.POST, instance=post)
         if form.is_valid():
@@ -65,3 +75,4 @@ def todo_checked(request, pk):
         form = TodoForm(instance=post)
     return render(request, 'data/todo_edit.html', {'form': form})
 
+'''
