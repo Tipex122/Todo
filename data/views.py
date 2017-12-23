@@ -11,8 +11,8 @@ from .forms import TodoForm, CategoryForm
 
 def categories_list(request):
     categories = Category.objects.all()
-    print(categories)
-    context = {'categories': categories}
+    # print(categories)
+    context = {'categories': categories, }
     return render(request, 'data/categories_list.html', context)
 
 
@@ -47,13 +47,15 @@ def category_edit(request, pk):
 
 def index(request):
     todos = Todo.objects.all().filter(user=request.user)
-    context = {'todos': todos}
+    nbr = todos.count()
+    context = {'todos': todos, 'nbr': nbr, }
     return render(request,'data/todo_list.html', context)
 
 
 def todo_list_by_category(request, pk):
     todos = Todo.objects.filter(category__id=pk).filter(user=request.user)
-    context = {'todos': todos}
+    nbr = todos.count()
+    context = {'todos': todos, 'nbr': nbr, }
     return render(request, 'data/todo_list.html', context)
 
 

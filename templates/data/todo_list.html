@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    {% if nbr %}
     {% for todo in todos %}
         {% if todo.is_finished %}
         <div class="card">
@@ -46,4 +47,7 @@
         {% endif %}
         <p></p>
     {% endfor %}
+    {% else %}
+        <p>There is no Todo for you in this category</p>
+    {% endif %}
 {% endblock %}
