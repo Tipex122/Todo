@@ -10,8 +10,8 @@ class TodoAdmin(admin.ModelAdmin):
     date_hierarchy = 'created_date'
     empty_value_display = '-empty-'
     fields = (('todo_job', 'user', 'is_finished'), 'category', 'todo_job_detail',)
-    list_display = ('todo_job', 'todo_job_detail', 'is_finished', 'user',)
-    list_filter = ('user', 'is_finished',)
+    list_display = ('todo_job', 'todo_job_detail', 'category', 'is_finished', 'user',)
+    list_filter = ('user', 'is_finished', 'category',)
 
 
 @admin.register(Category)

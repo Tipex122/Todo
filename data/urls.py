@@ -11,5 +11,6 @@ urlpatterns = [
     path('<int:pk>/todo_list_by_category/', views.todo_list_by_category, name='todo_list_by_category'),
 
     path('categories_list/', views.categories_list, name='categories_list'),
+    path('category_new/', views.category_new, name='category_new'),
     path('<int:pk>/category_edit/', views.category_edit, name='category_edit'),
 ]

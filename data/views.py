@@ -11,8 +11,23 @@ from .forms import TodoForm, CategoryForm
 
 def categories_list(request):
     categories = Category.objects.all()
+    print(categories)
     context = {'categories': categories}
     return render(request, 'data/categories_list.html', context)
+
+
+def category_new(request):
+    if request.method == "POST":
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            category = form.save(commit=False)
+            category.save()
+            return redirect('categories_list')
+    else:
+        form = CategoryForm()
+
+    return render(request, 'data/category_edit.html', {'form': form})
+    # return render(request,'data/todo_edit.html',{'form': form})
 
 
 def category_edit(request, pk):
@@ -31,13 +46,13 @@ def category_edit(request, pk):
 
 
 def index(request):
-    todos = Todo.objects.all()
+    todos = Todo.objects.all().filter(user=request.user)
     context = {'todos': todos}
     return render(request,'data/todo_list.html', context)
 
 
 def todo_list_by_category(request, pk):
-    todos = Todo.objects.filter(category__id=pk)
+    todos = Todo.objects.filter(category__id=pk).filter(user=request.user)
     context = {'todos': todos}
     return render(request, 'data/todo_list.html', context)
 
