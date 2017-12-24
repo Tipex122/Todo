@@ -46,7 +46,7 @@ def category_edit(request, pk):
 
 
 def index(request):
-    todos = Todo.objects.all().filter(user=request.user)
+    todos = Todo.objects.all()
     nbr = todos.count()
     context = {'todos': todos, 'nbr': nbr, }
     return render(request,'data/todo_list.html', context)
